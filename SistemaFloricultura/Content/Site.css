@@ -1,0 +1,100 @@
+﻿html, body {height:100%;}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.geral {
+    min-height:100%;
+    position:relative;
+    background-image: url('../fonts/home.png');
+    background-size: 100%;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.content {overflow:hidden;}
+.aside {width:200px;}
+.fleft {float:left;}
+.fright {float:right;}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.jumbotron {
+    background-color: #365645;
+    color: white;
+}
+
+.main-jumbotron {
+    background-color: #365645;
+    box-shadow: 5px 5px 3px #1a2d23;
+}
+ 
+.container .jumbotron {
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.jumbotron-menu {
+     background-color: #264434;
+}
+
+.jumbotron h1,h2,h3,h4,h5,h6,p {
+   color: white;
+   font-weight: bold;
+}
+
+.jumbotron p,a{
+    font-size:16px;
+   color: white;
+}
+.jumbotron-title {
+   color: white;
+   font-size:50px;
+   font-weight: bold;
+}
+
+.jumbotron-text {
+    margin-top:0.5%;
+   color: white;
+   font-size:45px;   
+   font-weight: bold;
+   font-style:italic;
+}
+.vr
+{
+  display:inline;
+  height:100%;
+  width:1px;
+  border:1px inset;
+  margin:20px
+}
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+padding-top:0px;
+}
