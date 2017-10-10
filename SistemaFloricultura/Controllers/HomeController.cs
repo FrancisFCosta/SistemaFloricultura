@@ -11,10 +11,7 @@ namespace SistemaFloricultura.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
-            LoginUsuarioComponent usuariocomponent = new LoginUsuarioComponent();
-            List<Usuario> listaUsuarios = usuariocomponent.ListarUsuariosPorNome("francis");
-
+        {            
             return View();
         }
 

@@ -1,7 +1,59 @@
-﻿
+﻿@using Util
+@using SistemaFloricultura.Models
+@model ProdutoModel
 @{
     ViewBag.Title = "CadastroProduto";
 }
 
-<h2>CadastroProduto</h2>
+<div class="jumbotron jumbotron-body">
+    <h2>Cadastro de Produto</h2>
+    <section id="cadastroProdutoForm">
+        @using (Html.BeginForm("SalvarProduto", "CadastroProduto", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nome, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PrecoCusto, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.PrecoCusto, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PrecoVenda, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.PrecoVenda, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">                
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Descricao, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @rows=3 })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DataAquisicao, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.DataAquisicao, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-10 col-md-2">
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" /> Salvar</button>
+                </div>
+            </div>
+        }
+    </section>
+
+</div>
 

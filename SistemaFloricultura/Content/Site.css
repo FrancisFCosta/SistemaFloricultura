@@ -1,4 +1,6 @@
-﻿html, body {height:100%;}
+﻿html, body {
+    height: 100%;
+}
 
 body {
     padding-top: 50px;
@@ -11,24 +13,35 @@ body {
 }
 
 .geral {
-    min-height:100%;
-    position:relative;
+    min-height: 100%;
+    position: relative;
     background-image: url('../fonts/home.png');
     background-size: 100%;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 .footer {
-    position:absolute;
-    bottom:0;
-    width:100%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
-.content {overflow:hidden;}
-.aside {width:200px;}
-.fleft {float:left;}
-.fright {float:right;}
+.content {
+    overflow: hidden;
+}
+
+.aside {
+    width: 200px;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -53,7 +66,13 @@ textarea {
     background-color: #365645;
     box-shadow: 5px 5px 3px #1a2d23;
 }
- 
+
+.jumbotron-body {
+    padding-top:0px;
+    background-color: white;
+    color: black;
+}
+
 .container .jumbotron {
     padding-right: 30px;
     padding-left: 30px;
@@ -62,39 +81,51 @@ textarea {
 }
 
 .jumbotron-menu {
-     background-color: #264434;
+    background-color: #264434;
 }
 
-.jumbotron h1,h2,h3,h4,h5,h6,p {
-   color: white;
-   font-weight: bold;
+.jumbotron h1, h2, h3, h4, h5, h6, p, a, a:hover {
+    color: white;
+    font-weight: bold;
+    font-style:italic;
 }
 
-.jumbotron p,a{
-    font-size:16px;
-   color: white;
+.jumbotron.jumbotron-body h1, h2, h3, h4, h5, h6 {
+    color: #264434;
+    font-weight: bold;
+    font-family:Verdana;
 }
+
+.jumbotron p, a {
+    font-size: 16px;
+}
+
+.jumbotron label {
+    font-size: 14px;
+}
+
 .jumbotron-title {
-   color: white;
-   font-size:50px;
-   font-weight: bold;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
 }
 
 .jumbotron-text {
-    margin-top:0.5%;
-   color: white;
-   font-size:45px;   
-   font-weight: bold;
-   font-style:italic;
+    margin-top: 0.5%;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    font-style: italic;
 }
-.vr
-{
-  display:inline;
-  height:100%;
-  width:1px;
-  border:1px inset;
-  margin:20px
+
+.vr {
+    display: inline;
+    height: 100%;
+    width: 1px;
+    border: 1px inset;
+    margin: 20px;
 }
+
 .form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
-padding-top:0px;
+    padding-top: 0px;
 }

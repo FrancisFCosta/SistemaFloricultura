@@ -15,7 +15,6 @@ namespace DataAccess
         private const string INSERIR = @"
             INSERT INTO produto 
             (
-                `id_produto`,
                 `nome_produto`,
                 `descricao_produto`, 
                 `preco_custo`, 
@@ -24,14 +23,13 @@ namespace DataAccess
             ) 
             VALUES 
             (
-                @id_produto, 
                 @nome_produto, 
                 @descricao_produto, 
                 @preco_custo, 
                 @preco_venda, 
                 @data_aquisicao
             );";
-        private const string LISTAR_PRODUTO_POR_NOME = "SELECT * FROM cliente WHERE nome LIKE '%{0}%';";
+        private const string LISTAR_PRODUTO_POR_NOME = "SELECT * FROM produto WHERE nome_produto LIKE '%{0}%';";
 
         #endregion
 
@@ -60,14 +58,19 @@ namespace DataAccess
             return listaRetorno;
         }
 
-        public void Inserir(Produto Produto)
+        public void Inserir(Produto produto)
         {
             var dbCon = DBConnection.Instance();
 
             if (dbCon.IsConnect())
             {
                 var cmd = new MySqlCommand(INSERIR, dbCon.Connection);
-                var param1 = new MySqlParameter("@nome_produto", MySqlDbType.Int32);
+
+                cmd.Parameters.AddWithValue("@nome_produto", produto.Nome);
+                cmd.Parameters.AddWithValue("@descricao_produto", produto.Descricao);
+                cmd.Parameters.AddWithValue("@preco_custo", produto.PrecoCusto);
+                cmd.Parameters.AddWithValue("@preco_venda", produto.PrecoVenda);
+                cmd.Parameters.AddWithValue("@data_aquisicao", produto.DataAquisicao);
 
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
