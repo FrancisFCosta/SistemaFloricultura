@@ -9,19 +9,20 @@ using System.Web.Mvc;
 
 namespace SistemaFloricultura.Controllers
 {
-    public class CadastroProdutoController : BaseController
+    public class CadastroPedidoController : BaseController
     {
         #region Propriedades
 
-        ProdutoComponent produtoComponent;
-
+        ProdutoComponent ProdutoComponent;
+        PedidoComponent PedidoComponent;
         #endregion
 
         #region Construtores
 
-        public CadastroProdutoController()
+        public CadastroPedidoController()
         {
-            produtoComponent = new ProdutoComponent();
+            ProdutoComponent = new ProdutoComponent();
+            PedidoComponent = new PedidoComponent();
         }
         #endregion
 
@@ -32,13 +33,15 @@ namespace SistemaFloricultura.Controllers
             return View();
         }
 
-        public ActionResult SalvarProduto(ProdutoModel produto)
+        public ActionResult SalvarPedido(PedidoModel produto)
         {
             if (produto != null)
             {
-                produtoComponent.RegistrarProduto(ConstruirProduto(produto));
+                PedidoComponent produtoComponent = new PedidoComponent();
 
-                List<Produto> listaUsuarios = produtoComponent.ListarProdutosPorNome("o");
+                produtoComponent.RegistrarPedido(ConstruirPedido(produto));
+
+                List<Pedido> listaUsuarios = produtoComponent.ListarPedidosPorNome("o");
             }
 
             return RedirectToAction("Index");
