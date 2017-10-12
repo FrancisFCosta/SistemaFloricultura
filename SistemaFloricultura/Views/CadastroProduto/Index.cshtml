@@ -21,30 +21,38 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(m => m.Descricao, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @rows = 3 })
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(m => m.PrecoCusto, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.PrecoCusto, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.PrecoCusto, new { @class = "form-control", @onkeyup = "moeda(this);", @maxlength = "10" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.PrecoVenda, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.PrecoVenda, new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">                
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Descricao, new { @class = "col-md-3 control-label" })
-                    <div class="col-md-9">
-                        @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @rows=3 })
+                        @Html.TextBoxFor(m => m.PrecoVenda, new { @class = "form-control", @onkeyup = "moeda(this);", @maxlength = "10" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.DataAquisicao, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
-                        @Html.TextBoxFor(m => m.DataAquisicao, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.DataAquisicao, new { @class = "form-control date", @id = "DataAquisicao" })
                     </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12" id="image-holder" style="width:100%; height:100%">
+                    <img id="imagemProduto" src="~/fonts/insiraumaimagem.jpg"/>
+                </div>
+                <div class="col-md-offset-4">
+                    <label class="btn btn-default btn-file">
+                        Escolha uma Imagem <input type="file" id="fileUpload" style="display: none;">
+                    </label>
                 </div>
             </div>
             <div class="form-group">
@@ -54,6 +62,30 @@
             </div>
         }
     </section>
-
 </div>
+<script>
+    $(document).ready(function () {
+        $('.date').mask('99/99/9999');
 
+        $('.date').on('change', function () {
+            $(this).mask('99/99/9999');
+        });
+    });
+
+    $("#fileUpload").on('change', function () {
+
+        if (typeof (FileReader) != "undefined") {
+
+            var image_holder = $("#image-holder");
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                //$('#imagemDefaultProduto').hide();
+                $('#imagemProduto').attr('src', e.target.result);
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            alert("Este navegador nao suporta FileReader.");
+        }
+    });
+</script>

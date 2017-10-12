@@ -11,6 +11,9 @@ namespace SistemaFloricultura
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery.maskedinput.min.js").Include(
+                       "~/Scripts/jquery.maskedinput.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 

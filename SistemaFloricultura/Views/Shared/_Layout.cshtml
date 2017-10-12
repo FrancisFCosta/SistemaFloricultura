@@ -9,7 +9,9 @@
     <title>@ViewBag.Title - @Constantes.NOME_APLICACAO</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery.maskedinput.min.js")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -61,9 +63,20 @@
                 <p>&copy; @DateTime.Now.Year - @Constantes.COPY_RIGHT </p>
             </footer>
         </div>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </div>   
+
+    @RenderSection("scripts", required: false) 
+    <script>
+        function moeda(z) {
+            v = z.value;
+            v = v.replace(/\D/g, "") // permite digitar apenas numero
+            v = v.replace(/(\d{1})(\d{14})$/, "$1.$2") // coloca ponto antes dos ultimos digitos
+            v = v.replace(/(\d{1})(\d{11})$/, "$1.$2") // coloca ponto antes dos ultimos 11 digitos
+            v = v.replace(/(\d{1})(\d{8})$/, "$1.$2") // coloca ponto antes dos ultimos 8 digitos
+            v = v.replace(/(\d{1})(\d{5})$/, "$1.$2") // coloca ponto antes dos ultimos 5 digitos
+            v = v.replace(/(\d{1})(\d{1,2})$/, "$1,$2") // coloca virgula antes dos ultimos 2 digitos
+            z.value = v;
+        }
+    </script>
 </body>
 </html>

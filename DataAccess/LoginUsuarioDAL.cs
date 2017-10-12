@@ -30,13 +30,22 @@ namespace DataAccess
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                try
                 {
-                    listaRetorno.Add(ConstruirUsuario(reader));
+                    while (reader.Read())
+                    {
+                        listaRetorno.Add(ConstruirUsuario(reader));
+                    }
                 }
-
-                reader.Close();
-                cmd.Dispose();
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    reader.Close();
+                    cmd.Dispose();
+                }
             }
             return listaRetorno;
         }

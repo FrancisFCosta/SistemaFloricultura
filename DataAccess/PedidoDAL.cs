@@ -47,13 +47,22 @@ namespace DataAccess
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                try
                 {
-                    listaRetorno.Add(ConstruirPedido(reader));
+                    while (reader.Read())
+                    {
+                        listaRetorno.Add(ConstruirPedido(reader));
+                    }
                 }
-
-                reader.Close();
-                cmd.Dispose();
+                catch (Exception)
+                {
+                    throw;
+                }                    
+                finally
+                {
+                    reader.Close();
+                    cmd.Dispose();
+                }
             }
             return listaRetorno;
         }
