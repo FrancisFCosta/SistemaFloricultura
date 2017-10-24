@@ -8,8 +8,8 @@
 <div class="jumbotron jumbotron-body">
     <h2>Cadastro de Produto</h2>
     <section id="cadastroProdutoForm">
-        @using (Html.BeginForm("SalvarProduto", "CadastroProduto", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+        @using (Html.BeginForm("SalvarProduto", "CadastroProduto", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -47,11 +47,11 @@
             </div>
             <div class="col-md-6">
                 <div class="col-md-12" id="image-holder" style="width:100%; height:100%">
-                    <img id="imagemProduto" src="~/fonts/insiraumaimagem.jpg"/>
+                    <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg"/>
                 </div>
                 <div class="col-md-offset-4">
                     <label class="btn btn-default btn-file">
-                        Escolha uma Imagem <input type="file" id="fileUpload" style="display: none;">
+                        Escolha uma Imagem <input type="file" name="ImagemProduto" id="ImagemProduto" accept="image/*" style="display: none;">
                     </label>
                 </div>
             </div>
@@ -72,16 +72,13 @@
         });
     });
 
-    $("#fileUpload").on('change', function () {
+    $("#ImagemProduto").on('change', function () {
 
         if (typeof (FileReader) != "undefined") {
-
-            var image_holder = $("#image-holder");
-
+            
             var reader = new FileReader();
             reader.onload = function (e) {
-                //$('#imagemDefaultProduto').hide();
-                $('#imagemProduto').attr('src', e.target.result);
+                $('#miniaturaImagemProduto').attr('src', e.target.result);
             }
             reader.readAsDataURL($(this)[0].files[0]);
         } else {

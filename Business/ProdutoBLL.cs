@@ -12,19 +12,27 @@ namespace Business
     {
         #region Propriedades
         private ProdutoDAL ProdutoDAL;
+        private ImagemProdutoDAL ImagemDAL;
         #endregion
 
         #region Construtores
         public ProdutoBLL()
         {
             ProdutoDAL = new ProdutoDAL();
+            ImagemDAL = new ImagemProdutoDAL();
         }
         #endregion
 
         #region Metodos Publicos
         public void RegistrarProduto(Produto produto)
         {
-            ProdutoDAL.Inserir(produto);
+            int? idProduto;
+            idProduto = ProdutoDAL.Inserir(produto);
+            if (idProduto.HasValue && produto.ImagemPrincipal != null)
+            {
+                produto.ImagemPrincipal.IdProduto = idProduto.Value; 
+                ImagemDAL.Inserir(produto.ImagemPrincipal);
+            }
         }
 
         public List<Produto> ListarProdutosPorNome(string nomeProduto)

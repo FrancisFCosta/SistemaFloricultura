@@ -14,7 +14,7 @@ namespace DataAccess
         {
         }
 
-        private string databaseName = "iclod_db";
+        private string databaseName = "icloddb";
         public string DatabaseName
         {
             get { return databaseName; }

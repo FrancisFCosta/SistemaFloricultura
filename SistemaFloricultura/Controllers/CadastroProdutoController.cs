@@ -32,13 +32,14 @@ namespace SistemaFloricultura.Controllers
             return View();
         }
 
-        public ActionResult SalvarProduto(ProdutoModel produto)
+        [HttpPost]
+        public ActionResult SalvarProduto(ProdutoModel produto, HttpPostedFileBase ImagemProduto)
         {
-            if (produto != null)
+            if (produto != null && !String.IsNullOrWhiteSpace(produto.Nome))
             {
-                produtoComponent.RegistrarProduto(ConstruirProduto(produto));
+                produtoComponent.RegistrarProduto(ConstruirProduto(produto, ImagemProduto));
 
-                List<Produto> listaUsuarios = produtoComponent.ListarProdutosPorNome("o");
+                //List<Produto> listaUsuarios = produtoComponent.ListarProdutosPorNome("o");
             }
 
             return RedirectToAction("Index");

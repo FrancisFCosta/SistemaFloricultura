@@ -15,20 +15,23 @@ namespace DataAccess
         private const string INSERIR = @"
             INSERT INTO produto 
             (
-                `nome_produto`,
-                `descricao_produto`, 
+                `nome`,
+                `descricao`, 
                 `preco_custo`, 
                 `preco_venda`, 
-                `data_aquisicao`
+                `data_aquisicao`,
+                `categoria`
             ) 
             VALUES 
             (
-                @nome_produto, 
-                @descricao_produto, 
+                @nome, 
+                @descricao, 
                 @preco_custo, 
                 @preco_venda, 
-                @data_aquisicao
+                @data_aquisicao,
+                @categoria
             );";
+
         private const string LISTAR_PRODUTO_POR_NOME = "SELECT * FROM produto WHERE nome_produto LIKE '%{0}%';";
 
         #endregion
@@ -67,23 +70,28 @@ namespace DataAccess
             return listaRetorno;
         }
 
-        public void Inserir(Produto produto)
+        public int? Inserir(Produto produto)
         {
+            int? idProdutoInserido = null;
             var dbCon = DBConnection.Instance();
 
             if (dbCon.IsConnect())
             {
                 var cmd = new MySqlCommand(INSERIR, dbCon.Connection);
 
-                cmd.Parameters.AddWithValue("@nome_produto", produto.Nome);
-                cmd.Parameters.AddWithValue("@descricao_produto", produto.Descricao);
+                cmd.Parameters.AddWithValue("@nome", produto.Nome);
+                cmd.Parameters.AddWithValue("@descricao", produto.Descricao);
                 cmd.Parameters.AddWithValue("@preco_custo", produto.PrecoCusto);
                 cmd.Parameters.AddWithValue("@preco_venda", produto.PrecoVenda);
                 cmd.Parameters.AddWithValue("@data_aquisicao", produto.DataAquisicao);
+                cmd.Parameters.AddWithValue("@categoria", 1);
 
                 cmd.ExecuteNonQuery();
+                idProdutoInserido = (int)cmd.LastInsertedId;
+
                 cmd.Dispose();
             }
+            return idProdutoInserido;
         }
 
         #endregion

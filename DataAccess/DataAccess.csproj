@@ -47,6 +47,7 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="LoginUsuarioDAL.cs" />
     <Compile Include="PedidoDAL.cs" />
+    <Compile Include="ImagemProdutoDAL.cs" />
     <Compile Include="ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
