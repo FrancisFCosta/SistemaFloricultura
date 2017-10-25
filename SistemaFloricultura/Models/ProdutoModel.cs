@@ -24,5 +24,7 @@ namespace SistemaFloricultura.Models
 
         [Display(Name = "Data Aquisição")]
         public DateTime DataAquisicao { get; set; }
+
+        public List<int> LstCategorias { get; set; }
     }
 }

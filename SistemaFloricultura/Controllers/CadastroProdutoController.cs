@@ -32,6 +32,11 @@ namespace SistemaFloricultura.Controllers
             return View();
         }
 
+        public ActionResult ListagemProdutos()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SalvarProduto(ProdutoModel produto, HttpPostedFileBase ImagemProduto)
         {

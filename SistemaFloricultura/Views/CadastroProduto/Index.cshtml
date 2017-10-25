@@ -14,6 +14,17 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="col-md-6">
+                <div class="col-md-12" id="image-holder" style="width:100%; height:100%">
+                    <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg" />
+                </div>
+                <div class="col-md-offset-4">
+                    <label class="btn btn-default btn-file">
+                        Escolha uma Imagem <input type="file" name="ImagemProduto" id="ImagemProduto" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-6">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Nome, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
@@ -44,17 +55,20 @@
                         @Html.TextBoxFor(m => m.DataAquisicao, new { @class = "form-control date", @id = "DataAquisicao" })
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="col-md-12" id="image-holder" style="width:100%; height:100%">
-                    <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg"/>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="lstCategorias">Categoria</label>
+                    <div class="col-md-9">
+                        <select id="lstCategorias" name="lstCategorias[]" multiple="multiple">
+                            <option value="1">Casamentos</option>
+                            <option value="2">Presentes</option>
+                            <option value="3">Jardinagem</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-offset-4">
-                    <label class="btn btn-default btn-file">
-                        Escolha uma Imagem <input type="file" name="ImagemProduto" id="ImagemProduto" accept="image/*" style="display: none;">
-                    </label>
-                </div>
+
             </div>
+
             <div class="form-group">
                 <div class="col-md-offset-10 col-md-2">
                     <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" /> Salvar</button>
@@ -63,26 +77,46 @@
         }
     </section>
 </div>
+
 <script>
     $(document).ready(function () {
+
+        $('#lstCategorias').multiselect({
+            includeSelectAllOption: true,
+            nSelectedText: 'Selecionado',
+            nonSelectedText: 'Não Selecionado',
+            selectAllText: 'Todas Selecionadas',
+            allSelectedText: 'Todas Selecionadas'
+        });
+
         $('.date').mask('99/99/9999');
 
         $('.date').on('change', function () {
             $(this).mask('99/99/9999');
         });
-    });
 
-    $("#ImagemProduto").on('change', function () {
+        $("#ImagemProduto").on('change', function () {
 
-        if (typeof (FileReader) != "undefined") {
-            
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#miniaturaImagemProduto').attr('src', e.target.result);
+            if (typeof (FileReader) != "undefined") {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#miniaturaImagemProduto').attr('src', e.target.result);
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("Este navegador nao suporta FileReader.");
             }
-            reader.readAsDataURL($(this)[0].files[0]);
-        } else {
-            alert("Este navegador nao suporta FileReader.");
-        }
+        });
+
+        //$('#btnSelected').click(function () {
+        //    var selected = $("#lstFruits option:selected");
+        //    var message = "";
+        //    selected.each(function () {
+        //        message += $(this).text() + " " + $(this).val() + "\n";
+        //    });
+        //    alert(message);
+        //});
     });
+
 </script>

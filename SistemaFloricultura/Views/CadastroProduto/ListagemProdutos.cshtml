@@ -1,0 +1,332 @@
+﻿@using Util
+@using SistemaFloricultura.Models
+@model ProdutoModel
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<div class="jumbotron jumbotron-body">
+    <div class="container">
+        <div class="category-products">
+            <ul class="products-grid category-products-grid itemgrid itemgrid-adaptive itemgrid-4col hover-effect size-s">
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/7/_/7_1_0.png" alt="Pimentinha em Atibaia" pagespeed_no_transform="">
+                        </a>
+                    </div>
+
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pimentinha</p></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-7">
+                            <span class="price">R$79,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$26,63</span>
+                    </div>
+
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:280%"></div>
+                        </div>
+                        <span class="amount">3 Comentário(s)</span>
+                    </div>
+
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 1;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/7/')"><span><span>COMPRAR</span></span></button>
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/buque-tres-rosas-amarelas.html" title="Buquê de 3 Rosas Amarelas em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/2/0/208_1_0.png" alt="Buquê de 3 Rosas Amarelas em Atibaia" pagespeed_no_transform="">
+                        </a>
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="opacity: 1; display: none;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/8/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/8/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/buque-tres-rosas-amarelas.html" title="Buquê de 3 Rosas Amarelas"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Buquê de 3 Rosas Amarelas</p></a></h2>
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-8">
+                            <span class="price">R$59,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$19,97</span>
+
+                    </div>
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:290%"></div>
+                        </div>
+                        <span class="amount">135 Comentário(s)</span>
+                    </div>
+                    <div class="actions clearer display-onhover" style="width: 90%; opacity: 1; display: none;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/8/')"><span><span>COMPRAR</span></span></button>
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+
+                        <a href="//www.isabelaflores.com/flor-fortuna-laranja.html" title="Flor da Fortuna Laranja em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/4/6/468_1_0.png" alt="Flor da Fortuna Laranja em Atibaia" pagespeed_no_transform="">
+                        </a>
+
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="display: none; opacity: 0.989971;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/9/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/9/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/flor-fortuna-laranja.html" title="Flor da Fortuna Laranja"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Flor da Fortuna Laranja</p></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-9">
+                            <span class="price">R$49,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$16,63</span>
+                    </div>
+
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:294%"></div>
+                        </div>
+                        <span class="amount">30 Comentário(s)</span>
+                    </div>
+
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 0.989971;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/9/')"><span><span>COMPRAR</span></span></button>
+
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/vaso-de-margaridas-para-presente.html" title="Vaso de Margaridas para Presente em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/8/8/88_1_0.png" alt="Vaso de Margaridas para Presente em Atibaia" pagespeed_no_transform="">
+                        </a>
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="display: none;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/11/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/11/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/vaso-de-margaridas-para-presente.html" title="Vaso de Margaridas para Presente"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vaso de Margaridas para Presente</p></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-11">
+                            <span class="price">R$79,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$26,63</span>
+                    </div>
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:293%"></div>
+                        </div>
+                        <span class="amount">79 Comentário(s)</span>
+                    </div>
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/11/')"><span><span>COMPRAR</span></span></button>
+
+                    </div> <!-- end: actions -->
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/7/_/7_1_0.png" alt="Pimentinha em Atibaia" pagespeed_no_transform="">
+                        </a>
+                    </div>
+
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha"><text style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pimentinha</text></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-7">
+                            <span class="price">R$79,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$26,63</span>
+                    </div>
+
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:280%"></div>
+                        </div>
+                        <span class="amount">3 Comentário(s)</span>
+                    </div>
+
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 1;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/7/')"><span><span>COMPRAR</span></span></button>
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/buque-tres-rosas-amarelas.html" title="Buquê de 3 Rosas Amarelas em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/2/0/208_1_0.png" alt="Buquê de 3 Rosas Amarelas em Atibaia" pagespeed_no_transform="">
+                        </a>
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="opacity: 1; display: none;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/8/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/8/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/buque-tres-rosas-amarelas.html" title="Buquê de 3 Rosas Amarelas"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Buquê de 3 Rosas Amarelas</p></a></h2>
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-8">
+                            <span class="price">R$59,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$19,97</span>
+
+                    </div>
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:290%"></div>
+                        </div>
+                        <span class="amount">135 Comentário(s)</span>
+                    </div>
+                    <div class="actions clearer display-onhover" style="width: 90%; opacity: 1; display: none;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/8/')"><span><span>COMPRAR</span></span></button>
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+
+                        <a href="//www.isabelaflores.com/flor-fortuna-laranja.html" title="Flor da Fortuna Laranja em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/4/6/468_1_0.png" alt="Flor da Fortuna Laranja em Atibaia" pagespeed_no_transform="">
+                        </a>
+
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="display: none; opacity: 0.989971;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/9/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/9/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/flor-fortuna-laranja.html" title="Flor da Fortuna Laranja"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Flor da Fortuna Laranja</p></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-9">
+                            <span class="price">R$49,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$16,63</span>
+                    </div>
+
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:294%"></div>
+                        </div>
+                        <span class="amount">30 Comentário(s)</span>
+                    </div>
+
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 0.989971;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/9/')"><span><span>COMPRAR</span></span></button>
+
+                    </div>
+                </li>
+
+                <li class="item" style="">
+                    <div class="product-image-wrapper" style="max-width:220px;">
+                        <a href="//www.isabelaflores.com/vaso-de-margaridas-para-presente.html" title="Vaso de Margaridas para Presente em Atibaia" class="product-image">
+                            <img src="https://www.isabelaflores.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/8/8/88_1_0.png" alt="Vaso de Margaridas para Presente em Atibaia" pagespeed_no_transform="">
+                        </a>
+                        <ul class="add-to-links clearer addto-links-icons addto-onimage display-onhover" style="display: none;">
+                            <li>
+                                <a class="link-wishlist" href="https://www.isabelaflores.com/wishlist/index/add/product/11/" title="Lista de Desejos">
+                                    <span class="2 icon ib-small ic ic-list-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" href="//www.isabelaflores.com/catalog/product_compare/add/product/11/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/" title="Compare">
+                                    <span class="2 icon ib-small ic ic-compare-small" style="border-radius:50%;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2 class="product-name"><a href="//www.isabelaflores.com/vaso-de-margaridas-para-presente.html" title="Vaso de Margaridas para Presente"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vaso de Margaridas para Presente</p></a></h2>
+
+                    <div class="price-box">
+                        <span class="regular-price" id="product-price-11">
+                            <span class="price">R$79,90</span>
+                        </span>
+                        <span class="preco-12x-label">ou 3x de </span>
+                        <span class="preco-12x-list" style="font-size: 13px !important;">R$26,63</span>
+                    </div>
+                    <div class="ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width:293%"></div>
+                        </div>
+                        <span class="amount">79 Comentário(s)</span>
+                    </div>
+                    <div class="actions clearer display-onhover" style="width: 90%; display: none;">
+                        <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
+                        <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/11/')"><span><span>COMPRAR</span></span></button>
+
+                    </div> <!-- end: actions -->
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<link href="~/content/gridproduto.css" rel="stylesheet" />
+<script src="~/scripts/jquery.maskedinput.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.date').mask('00/00/0000');
+        $('.money').mask('000.000.000.000.000,00', { reverse: true });
+    });
+</script>

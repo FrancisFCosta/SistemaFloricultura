@@ -8,10 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @Constantes.NOME_APLICACAO</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @*@Scripts.Render("~/bundles/mutiselect.css")*@
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/mutiselect.js")*@
     @Scripts.Render("~/bundles/jquery.maskedinput.min.js")
+    <link href="~/content/mutiselect.css" rel="stylesheet" />
+    <script src="~/scripts/mutiselect.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,8 +50,9 @@
         @if (Request.IsAuthenticated)
         {
             <div class="jumbotron jumbotron-menu">
-                @Html.ActionLink("Produtos", "Index", "CadastroProduto") <div class="vr"></div>
-                @Html.ActionLink("Pedidos", "Index", "CadastroPedido") <div class="vr"></div>
+                @Html.ActionLink("Cadastro de Produtos", "Index", "CadastroProduto") <div class="vr"></div>
+                @Html.ActionLink("Produtos", "ListagemProdutos", "CadastroProduto") <div class="vr"></div>
+                @Html.ActionLink("Solicitação de Pedido", "Index", "CadastroPedido") <div class="vr"></div>
                 @Html.ActionLink("Orçamentos", "Index", "CadastroProduto") <div class="vr"></div>
                 @Html.ActionLink("Encomendas", "Index", "CadastroProduto") <div class="vr"></div>
                 @Html.ActionLink("Estoque", "Index", "CadastroProduto") <div class="vr"></div>
