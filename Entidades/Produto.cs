@@ -15,5 +15,6 @@ namespace Entidades
         public double PrecoVenda { get; set; }
         public DateTime DataAquisicao { get; set; }
         public ImagemProduto ImagemPrincipal { get; set; }
+        public List<CategoriaProduto> ListaCategorias { get; set; }
     }
 }

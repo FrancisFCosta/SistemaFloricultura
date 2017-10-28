@@ -28,6 +28,11 @@ namespace Component
             ProdutoBll.RegistrarProduto(produto);
         }
 
+        public List<Produto> ListarProdutos()
+        {
+            return ProdutoBll.ListarProdutos();
+        }
+
         public List<Produto> ListarProdutosPorNome(string nomeProduto)
         {
             return ProdutoBll.ListarProdutosPorNome(nomeProduto);

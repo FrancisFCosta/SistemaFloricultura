@@ -30,9 +30,11 @@ namespace SistemaFloricultura.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
+            List<ProdutoModel> listaProdutos = ObterListaProdutoModel(ProdutoComponent.ListarProdutos());
 
+            return View(listaProdutos);
+        }
+        
         public ActionResult SalvarPedido(PedidoModel produto)
         {
             if (produto != null)

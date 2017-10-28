@@ -41,11 +41,7 @@ namespace SistemaFloricultura.Controllers
         public ActionResult SalvarProduto(ProdutoModel produto, HttpPostedFileBase ImagemProduto)
         {
             if (produto != null && !String.IsNullOrWhiteSpace(produto.Nome))
-            {
                 produtoComponent.RegistrarProduto(ConstruirProduto(produto, ImagemProduto));
-
-                //List<Produto> listaUsuarios = produtoComponent.ListarProdutosPorNome("o");
-            }
 
             return RedirectToAction("Index");
         }

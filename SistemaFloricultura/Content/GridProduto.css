@@ -64,6 +64,15 @@
         -moz-transform: translateZ(0);
     }
 
+.product-image-wrapper a > img {
+    position: relative;
+    height: 200px;
+    max-width:  200px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
 .products-grid {
 }
 

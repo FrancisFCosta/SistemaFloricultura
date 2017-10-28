@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace SistemaFloricultura.Models
         [Display(Name = "Data Aquisição")]
         public DateTime DataAquisicao { get; set; }
 
-        public List<int> LstCategorias { get; set; }
+        public List<CategoriaProduto> LstCategorias { get; set; }
+
+        public ImagemProduto ImagemPrincipal { get; set; }
     }
 }

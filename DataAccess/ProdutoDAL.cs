@@ -19,8 +19,7 @@ namespace DataAccess
                 `descricao`, 
                 `preco_custo`, 
                 `preco_venda`, 
-                `data_aquisicao`,
-                `categoria`
+                `data_aquisicao`
             ) 
             VALUES 
             (
@@ -28,15 +27,44 @@ namespace DataAccess
                 @descricao, 
                 @preco_custo, 
                 @preco_venda, 
-                @data_aquisicao,
-                @categoria
+                @data_aquisicao
             );";
 
+        private const string LISTAR_PRODUTOS = "SELECT * FROM produto"; 
         private const string LISTAR_PRODUTO_POR_NOME = "SELECT * FROM produto WHERE nome_produto LIKE '%{0}%';";
-
         #endregion
 
         #region Metodos Publicos
+
+        public List<Produto> ListarProdutos()
+        {
+            var dbCon = DBConnection.Instance();
+            List<Produto> listaRetorno = new List<Produto>();
+
+            if (dbCon.IsConnect())
+            {
+                var cmd = new MySqlCommand(LISTAR_PRODUTOS, dbCon.Connection);
+                var reader = cmd.ExecuteReader();
+
+                try
+                {
+                    while (reader.Read())
+                    {
+                        listaRetorno.Add(ConstruirProduto(reader));
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    reader.Close();
+                    cmd.Dispose();
+                }
+            }
+            return listaRetorno;
+        }
 
         public List<Produto> ListarProdutosPorNome(string nomeProduto)
         {
@@ -84,7 +112,6 @@ namespace DataAccess
                 cmd.Parameters.AddWithValue("@preco_custo", produto.PrecoCusto);
                 cmd.Parameters.AddWithValue("@preco_venda", produto.PrecoVenda);
                 cmd.Parameters.AddWithValue("@data_aquisicao", produto.DataAquisicao);
-                cmd.Parameters.AddWithValue("@categoria", 1);
 
                 cmd.ExecuteNonQuery();
                 idProdutoInserido = (int)cmd.LastInsertedId;
