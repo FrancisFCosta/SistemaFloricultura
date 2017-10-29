@@ -30,7 +30,7 @@ namespace DataAccess
             );";
 
         private const string OBTER_IMAGEM_PRODUTO = @"SELECT id, produto_id, imagem, idc_principal, nomeImagem, tamanho_imagem FROM imagem_produto WHERE produto_id = {0};";
-
+        private const string EXCLUIR_POR_ID_PRODUTO = "DELETE FROM `imagem_produto` WHERE `produto_id` = @produto_id;";
         #endregion
 
         #region Metodos Publicos
@@ -82,7 +82,7 @@ namespace DataAccess
                 {
                     while (reader.Read())
                     {
-                        return ConstruirImagemProduto(reader);
+                        imagemRecuperada = ConstruirImagemProduto(reader);
                     }
                 }
                 catch (Exception)
@@ -132,6 +132,20 @@ namespace DataAccess
             return listaRetorno;
         }
 
+        public void ExcluirPorId(int idProduto)
+        {
+            var dbCon = DBConnection.Instance();
+
+            if (dbCon.IsConnect())
+            {
+                var cmd = new MySqlCommand(EXCLUIR_POR_ID_PRODUTO, dbCon.Connection);
+
+                cmd.Parameters.AddWithValue("@produto_id", idProduto);
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+        }
         #endregion
 
         #region Metodos Privados

@@ -28,9 +28,14 @@ namespace SistemaFloricultura.Controllers
 
         #region Metodos Publicos
 
-        public ActionResult Index()
+        public ActionResult Index(CategoriaProduto? categoriaProduto = null)
         {
-            List<ProdutoModel> listaProdutos = ObterListaProdutoModel(ProdutoComponent.ListarProdutos());
+            List<ProdutoModel> listaProdutos = null;
+
+            if (categoriaProduto.HasValue)
+                listaProdutos = ObterListaProdutoModel(ProdutoComponent.ListarProdutosPorCategoria(categoriaProduto.Value));
+            else
+                listaProdutos = ObterListaProdutoModel(ProdutoComponent.ListarProdutos());
 
             return View(listaProdutos);
         }

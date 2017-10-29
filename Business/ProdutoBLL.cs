@@ -49,6 +49,40 @@ namespace Business
             }
         }
 
+        public void AtualizarProduto(Produto produto)
+        {
+            ProdutoDAL.Atualizar(produto);
+
+            ImagemDAL.ExcluirPorId(produto.Id);
+
+            if (produto.ImagemPrincipal != null)
+            {
+                produto.ImagemPrincipal.IdProduto = produto.Id;
+                ImagemDAL.Inserir(produto.ImagemPrincipal);
+            }
+
+            CategoriaDAL.ExcluirPorId(produto.Id);
+
+            if (produto.ListaCategorias != null && produto.ListaCategorias.Any())
+            {
+                foreach (var categoria in produto.ListaCategorias)
+                    CategoriaDAL.Inserir(new Categoria() { IdProduto = produto.Id, CodigoCategoria = categoria });
+            }
+        }
+        public Produto ObterProdutoPorID(int idProduto)
+        {
+            Produto produto = ProdutoDAL.ObterProdutoPorID(idProduto);
+
+            if (produto != null)
+            {
+                produto.ImagemPrincipal = ImagemDAL.ObterImagemPrincipal(produto.Id);
+                List<Categoria> listaCategorias = CategoriaDAL.ListarCategoriasPorId(produto.Id);
+                produto.ListaCategorias = listaCategorias != null && listaCategorias.Any() ? listaCategorias.Select(cat => cat.CodigoCategoria).ToList() : new List<CategoriaProduto>();
+            }
+
+            return produto;
+        }
+
         public List<Produto> ListarProdutos()
         {
             List<Produto> listaRetorno = ProdutoDAL.ListarProdutos();
@@ -62,6 +96,19 @@ namespace Business
             return listaRetorno;
         }
 
+        public List<Produto> ListarProdutosPorCategoria(CategoriaProduto categoria)
+        {
+            List<Produto> listaRetorno = ProdutoDAL.ListarProdutosPorCategoria(categoria);
+
+            if (listaRetorno != null && listaRetorno.Any())
+            {
+                foreach (var produto in listaRetorno)
+                    produto.ImagemPrincipal = ImagemDAL.ObterImagemPrincipal(produto.Id);
+            }
+
+            return listaRetorno;
+        }
+        
         public List<Produto> ListarProdutosPorNome(string nomeProduto)
         {
             return ProdutoDAL.ListarProdutosPorNome(nomeProduto);

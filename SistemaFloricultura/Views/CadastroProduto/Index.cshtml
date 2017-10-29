@@ -1,8 +1,9 @@
-﻿@using Util
+﻿@using Entidades
 @using SistemaFloricultura.Models
 @model ProdutoModel
 @{
     ViewBag.Title = "CadastroProduto";
+    int[] categorias = Model.LstCategorias != null ? Model.LstCategorias.Select(c => (int)c).ToArray() : new int[0];
 }
 
 <div class="jumbotron jumbotron-body">
@@ -15,7 +16,14 @@
 
             <div class="col-md-6">
                 <div class="col-md-12" id="image-holder" style="width:100%; height:100%">
-                    <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg" />
+                    @if (Model.ImagemPrincipal != null)
+                    {
+                        <img id="miniaturaImagemProduto" src=@String.Concat("data:image/png;base64," + Convert.ToBase64String(Model.ImagemPrincipal.ImagemBytes))>
+                    }
+                    else
+                    {
+                        <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg" />
+                    }
                 </div>
                 <div class="col-md-offset-4">
                     <label class="btn btn-default btn-file">
@@ -23,6 +31,8 @@
                     </label>
                 </div>
             </div>
+
+            @Html.HiddenFor(m=>m.Id, new { @class = "form-control" })
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -61,12 +71,12 @@
                     <div class="col-md-9">
                         <select id="lstCategorias" name="lstCategorias[]" multiple="multiple">
                             <option value="1">Casamentos</option>
-                            <option value="2">Presentes</option>
+                            <option value="2"> Presentes</option>
                             <option value="3">Jardinagem</option>
                         </select>
                     </div>
                 </div>
-
+                <input hidden id="categoriasSalvasNoBanco" value="@String.Join(",", categorias)">
             </div>
 
             <div class="form-group">
@@ -74,12 +84,20 @@
                     <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" /> Salvar</button>
                 </div>
             </div>
-        }
+    }
     </section>
 </div>
 
 <script>
     $(document).ready(function () {
+
+        var categoriasSalvasNoBanco = $('#categoriasSalvasNoBanco').val().split(',');
+
+        $('#lstCategorias option').each(function () {
+            if (categoriasSalvasNoBanco.indexOf($(this).val()) > -1) {
+                $(this).attr('selected', true);
+            }
+        });
 
         $('#lstCategorias').multiselect({
             includeSelectAllOption: true,
@@ -109,14 +127,6 @@
             }
         });
 
-        //$('#btnSelected').click(function () {
-        //    var selected = $("#lstFruits option:selected");
-        //    var message = "";
-        //    selected.each(function () {
-        //        message += $(this).text() + " " + $(this).val() + "\n";
-        //    });
-        //    alert(message);
-        //});
     });
 
 </script>

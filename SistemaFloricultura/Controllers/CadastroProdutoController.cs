@@ -27,9 +27,15 @@ namespace SistemaFloricultura.Controllers
 
         #region Metodos Publicos
 
-        public ActionResult Index()
+        public ActionResult Index(int? id_produto = null)
         {
-            return View();
+            ProdutoModel produtoModel = new ProdutoModel();
+
+            if (id_produto.HasValue)
+            {
+                produtoModel = ConstruirProdutoModel(produtoComponent.ObterProdutoPorID(id_produto.Value));
+            }
+            return View(produtoModel);
         }
 
         public ActionResult ListagemProdutos()
@@ -40,8 +46,13 @@ namespace SistemaFloricultura.Controllers
         [HttpPost]
         public ActionResult SalvarProduto(ProdutoModel produto, HttpPostedFileBase ImagemProduto)
         {
-            if (produto != null && !String.IsNullOrWhiteSpace(produto.Nome))
-                produtoComponent.RegistrarProduto(ConstruirProduto(produto, ImagemProduto));
+            Produto produtoParaSalvar = ConstruirProduto(produto, ImagemProduto);
+            Produto produtoNoBanco = produtoComponent.ObterProdutoPorID(produtoParaSalvar.Id);
+
+            if (produtoNoBanco != null)
+                produtoComponent.AtualizarProduto(produtoParaSalvar);
+            else
+                produtoComponent.RegistrarProduto(produtoParaSalvar);
 
             return RedirectToAction("Index");
         }

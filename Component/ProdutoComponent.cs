@@ -23,14 +23,28 @@ namespace Component
 
         #region Metodos Publicos
 
+        public Produto ObterProdutoPorID(int idProduto)
+        {
+            return ProdutoBll.ObterProdutoPorID(idProduto);
+        }
+
         public void RegistrarProduto(Produto produto)
         {
             ProdutoBll.RegistrarProduto(produto);
+        }
+        public void AtualizarProduto(Produto produto)
+        {
+            ProdutoBll.AtualizarProduto(produto);
         }
 
         public List<Produto> ListarProdutos()
         {
             return ProdutoBll.ListarProdutos();
+        }
+
+        public List<Produto> ListarProdutosPorCategoria(CategoriaProduto categoria)
+        {
+            return ProdutoBll.ListarProdutosPorCategoria(categoria);
         }
 
         public List<Produto> ListarProdutosPorNome(string nomeProduto)

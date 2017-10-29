@@ -23,12 +23,19 @@
                     {
                         <li class="item">
                             <div class="product-image-wrapper" style="max-width:220px;">
-                                <a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha em Atibaia" class="product-image">
-                                    <img src=@String.Concat("data:image/png;base64," + Convert.ToBase64String(produto.ImagemPrincipal.ImagemBytes)) alt="@produto.Nome" pagespeed_no_transform="">
+                                <a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome">
+                                    @if (produto.ImagemPrincipal != null)
+                                    {
+                                        <img src=@String.Concat("data:image/png;base64," + Convert.ToBase64String(produto.ImagemPrincipal.ImagemBytes)) alt="@produto.Nome" pagespeed_no_transform="">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/fonts/insiraumaimagem.jpg" alt="@produto.Nome" pagespeed_no_transform="">
+                                    }
                                 </a>
                             </div>
 
-                            <h2 class="product-name"><a href="//www.isabelaflores.com/pimentinha.html" title="Pimentinha"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@produto.Nome</p></a></h2>
+                            <h2 class="product-name"><a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@produto.Nome</p></a></h2>
 
                             <div class="price-box">
                                 <span class="regular-price" id="product-price-7">

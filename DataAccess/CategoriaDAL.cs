@@ -24,7 +24,7 @@ namespace DataAccess
                 @categoria
             );";
 
-        private const string LISTAR_CATEGORIA_POR_ID = "SELECT * FROM Categoria WHERE produto_id = @produto_id;";
+        private const string LISTAR_CATEGORIA_POR_ID = "SELECT produto_id, categoria  FROM Categoria WHERE produto_id = @produto_id;";
         private const string EXCLUIR_POR_ID_PRODUTO = "DELETE FROM `categoria` WHERE `produto_id` = @produto_id;";
 
         #endregion
@@ -38,9 +38,8 @@ namespace DataAccess
 
             if (dbCon.IsConnect())
             {
-                string query = String.Format(LISTAR_CATEGORIA_POR_ID, idProduto);
-
-                var cmd = new MySqlCommand(query, dbCon.Connection);
+                var cmd = new MySqlCommand(LISTAR_CATEGORIA_POR_ID, dbCon.Connection);
+                cmd.Parameters.Add("produto_id", MySqlDbType.Int32).Value = idProduto;
                 var reader = cmd.ExecuteReader();
 
                 try

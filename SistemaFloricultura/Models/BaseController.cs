@@ -33,6 +33,7 @@ namespace SistemaFloricultura.Models
                 
                 return new Produto()
                 {
+                    Id = produto.Id,
                     Nome = produto.Nome,
                     Descricao = produto.Descricao,
                     PrecoVenda = produto.PrecoVenda,
@@ -51,6 +52,7 @@ namespace SistemaFloricultura.Models
             {
                 return new ProdutoModel()
                 {
+                    Id = produto.Id,
                     Nome = produto.Nome,
                     Descricao = produto.Descricao,
                     PrecoVenda = produto.PrecoVenda,
@@ -60,7 +62,7 @@ namespace SistemaFloricultura.Models
                     ImagemPrincipal = produto.ImagemPrincipal
                 };
             }
-            return null;
+            return new ProdutoModel();
         }
 
         public static List<ProdutoModel> ObterListaProdutoModel(List<Produto> list)
