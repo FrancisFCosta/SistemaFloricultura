@@ -1,7 +1,7 @@
 ﻿@using Util
 @using SistemaFloricultura.Models
 @using System.Globalization
-@model List<ProdutoModel>
+@model PedidoModel
 @{
     ViewBag.Title = "CadastroPedido";
 }
@@ -9,7 +9,7 @@
 <div class="jumbotron jumbotron-body">
     <h2>Solicitação de Pedido</h2>
     <div class="container">
-        <div class="category-products">
+        @*<div class="category-products">
 
             @if (Model == null || !Model.Any())
             {
@@ -35,7 +35,7 @@
                                 </a>
                             </div>
 
-                            <h2 class="product-name"><a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@produto.Nome</p></a></h2>
+                            <h2 class="product-name"><a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;">@produto.Nome</p></a></h2>
 
                             <div class="price-box">
                                 <span class="regular-price" id="product-price-7">
@@ -60,14 +60,7 @@
                     }
                 </ul>
             }
-        </div>
+        </div>*@
     </div>
 </div>
 <link href="~/content/gridproduto.css" rel="stylesheet" />
-<script src="~/scripts/jquery.maskedinput.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.date').mask('00/00/0000');
-        $('.money').mask('000.000.000.000.000,00', { reverse: true });
-    });
-</script>

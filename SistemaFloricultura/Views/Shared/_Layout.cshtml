@@ -55,15 +55,12 @@
                 <div class="dropdown">
                     <span class="dropspn">Produtos</span>
                     <div class="dropdown-content">
-                        @Html.ActionLink("Presentes", "Index", "CadastroPedido", new { categoriaProduto = CategoriaProduto.Presentes }, null)
-                        @Html.ActionLink("Casamentos", "Index", "CadastroPedido", new { categoriaProduto = CategoriaProduto.Casamentos }, null)
-                        @Html.ActionLink("Jardinagem", "Index", "CadastroPedido", new { categoriaProduto = CategoriaProduto.Jardinagem }, null)
+                        @Html.ActionLink("Presentes", "ListagemProdutos", "CadastroProduto", new { categoriaProduto = CategoriaProduto.Presentes }, null)
+                        @Html.ActionLink("Casamentos", "ListagemProdutos", "CadastroProduto", new { categoriaProduto = CategoriaProduto.Casamentos }, null)
+                        @Html.ActionLink("Jardinagem", "ListagemProdutos", "CadastroProduto", new { categoriaProduto = CategoriaProduto.Jardinagem }, null)
                     </div>
                 </div><div class="vr"></div>
-                <a href="#">@Html.ActionLink("Solicitação de Pedido", "Index", "CadastroPedido")</a><div class="vr"></div>
-                @Html.ActionLink("Orçamentos", "Index", "CadastroProduto") <div class="vr"></div>
-                @Html.ActionLink("Encomendas", "Index", "CadastroProduto") <div class="vr"></div>
-                @Html.ActionLink("Estoque", "Index", "CadastroProduto") <div class="vr"></div>
+                <a href="#">@Html.ActionLink("Pedidos", "Index", "CadastroPedido")</a><div class="vr"></div>
             </div>
         }
 

@@ -38,9 +38,16 @@ namespace SistemaFloricultura.Controllers
             return View(produtoModel);
         }
 
-        public ActionResult ListagemProdutos()
+        public ActionResult ListagemProdutos(CategoriaProduto? categoriaProduto = null)
         {
-            return View();
+            List<ProdutoModel> listaProdutos = null;
+
+            if (categoriaProduto.HasValue)
+                listaProdutos = ObterListaProdutoModel(produtoComponent.ListarProdutosPorCategoria(categoriaProduto.Value));
+            else
+                listaProdutos = ObterListaProdutoModel(produtoComponent.ListarProdutos());
+
+            return View(listaProdutos);
         }
 
         [HttpPost]
