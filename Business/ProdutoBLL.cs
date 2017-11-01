@@ -53,18 +53,17 @@ namespace Business
         {
             ProdutoDAL.Atualizar(produto);
 
-            ImagemDAL.ExcluirPorId(produto.Id);
 
             if (produto.ImagemPrincipal != null)
             {
+                ImagemDAL.ExcluirPorId(produto.Id);
                 produto.ImagemPrincipal.IdProduto = produto.Id;
                 ImagemDAL.Inserir(produto.ImagemPrincipal);
             }
 
-            CategoriaDAL.ExcluirPorId(produto.Id);
-
             if (produto.ListaCategorias != null && produto.ListaCategorias.Any())
             {
+                CategoriaDAL.ExcluirPorId(produto.Id);
                 foreach (var categoria in produto.ListaCategorias)
                     CategoriaDAL.Inserir(new Categoria() { IdProduto = produto.Id, CodigoCategoria = categoria });
             }
@@ -108,7 +107,7 @@ namespace Business
 
             return listaRetorno;
         }
-        
+
         public List<Produto> ListarProdutosPorNome(string nomeProduto)
         {
             return ProdutoDAL.ListarProdutosPorNome(nomeProduto);

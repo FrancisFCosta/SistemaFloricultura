@@ -17,6 +17,7 @@
     <link href="~/content/mutiselect.css" rel="stylesheet" />
     <script src="~/scripts/mutiselect.js"></script>
     <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/alerts.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -51,7 +52,6 @@
         {
             <div class="jumbotron jumbotron-menu">
                 @Html.ActionLink("Cadastro de Produtos", "Index", "CadastroProduto") <div class="vr"></div>
-                @*@Html.ActionLink("Produtos", "ListagemProdutos", "CadastroProduto") <div class="vr"></div>*@
                 <div class="dropdown">
                     <span class="dropspn">Produtos</span>
                     <div class="dropdown-content">
@@ -61,6 +61,7 @@
                     </div>
                 </div><div class="vr"></div>
                 <a href="#">@Html.ActionLink("Pedidos", "Index", "CadastroPedido")</a><div class="vr"></div>
+                <a href="@Url.Action("Index", "CadastroPedido")"><span class="glyphicon glyphicon-shopping-cart white"></span></a>
             </div>
         }
 

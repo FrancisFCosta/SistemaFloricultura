@@ -49,12 +49,7 @@
                                 <div class="rating-box">
                                     <div class="rating" style="width:280%"></div>
                                 </div>
-                                <span class="amount">Add Carrinho</span>
-                            </div>
-
-                            <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 1;">
-                                <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
-                                <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/7/')"><span><span>COMPRAR</span></span></button>
+                                <button class="amount botao-comprar btn btn-success" value="@produto.Id">Comprar</button>
                             </div>
                         </li>
                     }
@@ -64,3 +59,60 @@
     </div>
 </div>
 <link href="~/content/gridproduto.css" rel="stylesheet" />
+<script>
+    var urlAdicionarProduto = '@Url.Action("AdicionarCarrinho", "CadastroPedido")';
+
+    $(document).ready(function () {
+
+        $('.botao-comprar').on('click', function () {
+            adicionarCarrinho($(this).val());
+        });
+
+    });
+
+    function adicionarCarrinho(idProduto) {
+        $.ajax({
+            url: urlAdicionarProduto,
+            type: 'post',
+            data: { idProduto: idProduto},
+            beforeSend: function () {}
+        })
+        .done(function (resultado) {
+            if (resultado != null) {
+                if (resultado.sucesso === true) {
+                    jbkrAlert.sucesso('Sucesso', resultado.mensagem);
+                }
+                else {
+                    jbkrAlert.erro('Erro', resultado.mensagem);
+                }
+            }
+        })
+        .fail(function (jqXHR, textStatus, msg) {
+            exibirPopupErro(msg);
+        });
+    }
+
+    function exibirPopupSucesso(msg) {
+        var popup= $('<div>');
+        popup.append(msg);
+        $('body').append(popup);
+        popup.css("position","absolute");
+        popup.css("top", ($(window).height() - popup.height() ) / 2+ $(window).scrollTop() + "px");
+        popup.css("left", ($(window).width() - popup.width() ) / 2+ $(window).scrollLeft() + "px");
+
+        popup.fadeOut(3000);
+    }
+
+    function exibirPopupErro(msg) {
+        var popup= $('<div>');
+        popup.append(msg);
+        $('body').append(popup);
+        popup.css("position","absolute");
+        popup.css("top", ($(window).height() - popup.height() ) / 2+ $(window).scrollTop() + "px");
+        popup.css("left", ($(window).width() - popup.width() ) / 2+ $(window).scrollLeft() + "px");
+
+        popup.fadeOut(3000);
+    }
+
+</script>
+

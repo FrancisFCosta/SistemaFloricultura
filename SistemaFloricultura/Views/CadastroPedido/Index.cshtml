@@ -9,58 +9,151 @@
 <div class="jumbotron jumbotron-body">
     <h2>Solicitação de Pedido</h2>
     <div class="container">
-        @*<div class="category-products">
-
-            @if (Model == null || !Model.Any())
+        <section id="cadastroPedidoForm">
+            @using (Html.BeginForm("SalvarPedido", "CadastroPedido", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
             {
-                <h3>Nenhum produto encontrado.</h3>
-            }
-            else
-            {
-                <ul class="products-grid category-products-grid itemgrid itemgrid-adaptive itemgrid-4col hover-effect size-s">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    @foreach (var produto in Model)
+                @Html.HiddenFor(m => m.Id, new { @class = "form-control" })
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Resumo, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.Resumo, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StatusPedido, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.StatusPedido, new { @class = "form-control", @onkeyup = "moeda(this);", @maxlength = "10" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="container">
+
+                    @if (Model.LinhasPedido != null && Model.LinhasPedido.Any())
                     {
-                        <li class="item">
-                            <div class="product-image-wrapper" style="max-width:220px;">
-                                <a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome">
-                                    @if (produto.ImagemPrincipal != null)
-                                    {
-                                        <img src=@String.Concat("data:image/png;base64," + Convert.ToBase64String(produto.ImagemPrincipal.ImagemBytes)) alt="@produto.Nome" pagespeed_no_transform="">
-                                    }
-                                    else
-                                    {
-                                        <img src="~/fonts/insiraumaimagem.jpg" alt="@produto.Nome" pagespeed_no_transform="">
-                                    }
-                                </a>
-                            </div>
 
-                            <h2 class="product-name"><a href="@Url.Action("Index", "CadastroProduto", new { id_produto = produto.Id})" title="@produto.Nome"><p style="max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;">@produto.Nome</p></a></h2>
+                        <table class="table" border="0">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th width="40%" colspan="2">Produto</th>
+                                    <th width="10%" style="text-align: center;">Val.Unit.</th>
+                                    <th width="6%%" style="text-align: center;">Qtde</th>
+                                    <th width="10%" style="text-align: center;">Val.Total</th>
+                                    <th width="6%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            <div class="price-box">
-                                <span class="regular-price" id="product-price-7">
-                                    <span class="price">@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", produto.PrecoVenda)</span>
-                                </span>
-                                <span class="preco-12x-label">à vista</span>
-                                <span class="preco-12x-list" style="font-size: 13px !important;">Não Perca!</span>
-                            </div>
-
-                            <div class="ratings">
-                                <div class="rating-box">
-                                    <div class="rating" style="width:280%"></div>
-                                </div>
-                                <span class="amount">Add Carrinho</span>
-                            </div>
-
-                            <div class="actions clearer display-onhover" style="width: 90%; display: none; opacity: 1;">
-                                <span style="font-size: 14px; margin-top: -5px;">  Floricultura em Atibaia </span><br><span class="entrega-list">Entregamos Hoje!</span>
-                                <button type="button" title="COMPRAR" class="button btn-cart tamanho-button" onclick="setLocation('//www.isabelaflores.com/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuaXNhYmVsYWZsb3Jlcy5jb20vZmxvcmVzLWF0aWJhaWEuaHRtbD9nY2xpZD1FQUlhSVFvYkNoTUkzLV9Ba0otQTF3SVZDQVNSQ2gxVTh3VkVFQUFZQVNBQUVnSm5XdkRfQndF/product/7/')"><span><span>COMPRAR</span></span></button>
-                            </div>
-                        </li>
+                                @foreach (var linhaPedido in Model.LinhasPedido)
+                                {
+                                    <tr valign="middle">
+                                        <td>
+                                            @if (linhaPedido.Produto.ImagemPrincipal != null)
+                                            {
+                                                <img id="miniaturaImagemProduto" src=@String.Concat("data:image/png;base64," + Convert.ToBase64String(linhaPedido.Produto.ImagemPrincipal.ImagemBytes))>
+                                            }
+                                            else
+                                            {
+                                                <img id="miniaturaImagemProduto" src="~/fonts/insiraumaimagem.jpg" />
+                                            }
+                                        </td>
+                                        <td>@linhaPedido.Produto.Nome</td>
+                                        <td><input class="valorUnitLinha" type="hidden" value="@linhaPedido.Produto.PrecoVenda"> @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", linhaPedido.Produto.PrecoVenda)</td>
+                                        <td>
+                                            <input name="quant" size="1" type="number" value="@linhaPedido.Quantidade" maxlength="2" class="form-control qtdprod" />
+                                        </td>
+                                        <td class="valorTotalLinha">@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", (linhaPedido.Produto.PrecoVenda * linhaPedido.Quantidade))</td>
+                                        <td><button type="button" class="glyphicon glyphicon-trash excluir-linha-pedido" value="@linhaPedido.Produto.Id"></button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     }
-                </ul>
+                    else
+                    {
+                        <h4>Nenhum produto adicionado ao carrinho.</h4>
+                    }
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Observacao, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(m => m.Observacao, new { @class = "form-control", @rows = 3 })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DataAlteracao, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.DataAlteracao, new { @class = "form-control", @onkeyup = "moeda(this);", @maxlength = "10" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-10 col-md-2">
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" /> Salvar</button>
+                    </div>
+                </div>
             }
-        </div>*@
+        </section>
     </div>
 </div>
-<link href="~/content/gridproduto.css" rel="stylesheet" />
+
+<script>
+    var urlExcluirProduto = '@Url.Action("ExcluirItem", "CadastroPedido")';
+
+    $(document).ready(function () {
+        $('.qtdprod').on('change', function () {
+            var quantidade = parseInt($(this).val());
+            var valorUnitario = parseFloat($(this).parent().parent().find('.valorUnitLinha').val());
+            var valorTotal = (quantidade * valorUnitario);
+            $(this).parent().parent().find('.valorTotalLinha').text('R$ ' + valorTotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,")).toString();
+        });
+
+        $('.qtdprod').on('blur', function () {
+            //todo: criar onblur atualizando valor do produto no carrinho;
+        });
+
+        $('.excluir-linha-pedido').on('click', function () {
+            $.ajax({
+                url: urlExcluirProduto,
+                type: 'post',
+                data: { idProduto: $(this).val() },
+                beforeSend: function () { }
+            })
+       .done(function (resultado) {
+           if (resultado != null) {
+               if (resultado.sucesso === true) {
+                   jbkrAlert.sucesso('Sucesso', resultado.mensagem, true);
+               }
+               else {
+                   jbkrAlert.erro('Erro', resultado.mensagem, false);
+               }
+           }
+       })
+       .fail(function (jqXHR, textStatus, msg) {
+           bkrAlert.erro(msg);
+       });
+        });
+    });
+
+</script>

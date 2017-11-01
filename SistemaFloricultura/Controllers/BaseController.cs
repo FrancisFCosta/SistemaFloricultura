@@ -86,13 +86,60 @@ namespace SistemaFloricultura.Models
             {
                 pedidoEntidade = new Pedido();
 
-                if (pedido.ListaProdutos.Any())
-                {
-                    foreach (var produto in pedido.ListaProdutos)
-                        pedidoEntidade.ListaProdutos.Add(ConstruirProduto(produto,null));
-                }
+                //if (pedido.ListaProdutos.Any())
+                //{
+                //    foreach (var produto in pedido.ListaProdutos)
+                //        pedidoEntidade.ListaProdutos.Add(ConstruirProduto(produto,null));
+                //}
             }
             return pedidoEntidade;
+        }
+
+        public static PedidoModel ConstruirPedidoModel(Pedido pedido)
+        {
+            if (pedido != null)
+            {
+                return new PedidoModel()
+                {
+                    Id = pedido.Id,
+                    Resumo = pedido.Resumo,
+                    IdCliente = pedido.IdCliente,
+                    LinhasPedido = ObterListaLinhaPedidoModel(pedido.LinhasPedido),
+                    Observacao = pedido.Observacao,
+                    DataAlteracao = pedido.DataAlteracao,
+                    StatusPedido = pedido.StatusPedido
+                };
+            }
+            return new PedidoModel();
+        }
+
+        public static List<LinhaPedidoModel> ObterListaLinhaPedidoModel(List<LinhaPedido> list)
+        {
+            List<LinhaPedidoModel> listaRetorno = new List<LinhaPedidoModel>();
+
+            if (list == null || !list.Any())
+                return listaRetorno;
+
+            foreach (var linhaPedido in list)
+                listaRetorno.Add(ConstruirLinhaPedidoModel(linhaPedido));
+
+            return listaRetorno;
+        }
+
+        public static LinhaPedidoModel ConstruirLinhaPedidoModel(LinhaPedido linhaPedido)
+        {
+            if (linhaPedido != null)
+            {
+                return new LinhaPedidoModel()
+                {
+                    DataInclusao = linhaPedido.DataInclusao,
+                    IdPedido = linhaPedido.IdPedido,
+                    Produto = linhaPedido.Produto,
+                    IdCliente = linhaPedido.IdCliente,
+                    Quantidade = linhaPedido.Quantidade
+                };
+            }
+            return new LinhaPedidoModel();
         }
     }
 }
